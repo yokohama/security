@@ -1,6 +1,6 @@
 # ARP
 
-| a | b |
+| title | filter |
 | - | - |
 | Opcode 1: ARP requests | arp.opcode == 1 |
 | Opcode 2: ARP responses | ap.opcode == 2 |
@@ -9,13 +9,19 @@
 | Hunt: Possible ARP flooding from detection | ((arp) && (arp.opcode == 1)) && (arp.src.hw_mac == target-mac-address) |
 
 # ICMP
+| title | filter |
+| - | - |
 | Hunt: Encapsulated protocol signs in ICMP payload | data.len > 64 and icmp |
 
 # DNS
+| title | filter |
+| - | - |
 | Hunt: DNS tunneling | dns.qry.name.len > 15 and !mdns |
 - !mdns ignore local link device query.
 
 # FTP
+| title | filter |
+| - | - |
 | 230: User login | ftp.response.code == 230 |
 | 231: User logout | ftp.response.code == 231 |
 | 331: Valid username | ftp.response.code == 331 |
@@ -28,4 +34,6 @@
 | HUNT: Password spray signal: List targets for a static password. | (ftp.request.command == "PASS" ) and (ftp.request.arg == "password") |
 
 # HTTP
+| title | filter |
+| - | - |
 | HUNT: Audit tools info like Nmap, Nikto, Wfuzz and sqlmap in the user agent field. | (http.user_agent contains "sqlmap") or (http.user_agent contains "Nmap") or (http.user_agent contains "Wfuzz") or (http.user_agent contains "Nikto") |
