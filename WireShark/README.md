@@ -1,5 +1,7 @@
 # ARP
 
+| a | b |
+| - | - |
 | Opcode 1: ARP requests | arp.opcode == 1 |
 | Opcode 2: ARP responses | ap.opcode == 2 |
 | Hunt: Arp scanning | arp.dst.hw_mac==00:00:00:00:00:00 |
